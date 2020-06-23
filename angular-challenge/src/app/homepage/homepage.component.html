@@ -1,1 +1,16 @@
-<p>homepage works!</p>
+<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['mycalendar']" routerLinkActive="active"><b>MY CALENDAR</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['secondary']" routerLinkActive="active"><b>SECONDARY CALENDARS</b></a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['statistics']" routerLinkActive="active"><b>STATISTICS</b></a>
+    </li>
+  </ul>
+
+  <div class="tab-pane">
+    <router-outlet></router-outlet>
+  </div>
+ 

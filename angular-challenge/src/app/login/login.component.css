@@ -1,0 +1,18 @@
+.card {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 40%;
+    margin: auto;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+.form-rounded {
+    border-radius: 20px;
+}
+
+.m-auto {
+    width: 60%;
+}
