@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { CalendarService } from '../calendar.service';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +10,18 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authSvc: AuthService, private router: Router) { }
+  loggedIn = false;
+  constructor(private authSvc: AuthService, private router: Router, public calendarSvc: CalendarService) { }
 
   ngOnInit() {
+    this.authSvc.isLoggedIn.subscribe(
+      data => this.loggedIn = data
+    );
   }
 
   logout() {
-    this.router.navigate(['/']);
+    this.authSvc.signOut();
+    this.router.navigate(['login']);
   }
 
 }

@@ -1,3 +1,8 @@
-<a [routerLink]="['/home/mycalendar']">
-    <h2>Devoteam Calendar</h2>
+<a [routerLink]="['/home/mycalendar']" *ngIf="loggedIn">
+    <h2>Welcome, {{calendarSvc.user.displayName}}</h2>
 </a>
+<h2 *ngIf="!loggedIn">Calendar API</h2>
+
+<button class="btn btn-outline-light"
+(click)="logout()"
+*ngIf="loggedIn">Logout</button>

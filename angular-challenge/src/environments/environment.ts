@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyDBgmKOuLvciZ6i1SxWzKs4_qR92YwzlQM',
+    authDomain: 'angular-challenge-b99ce.firebaseapp.com',
+    databaseURL: 'https://angular-challenge-b99ce.firebaseio.com',
+    projectId: 'angular-challenge-b99ce',
+    storageBucket: 'angular-challenge-b99ce.appspot.com',
+    messagingSenderId: '813615195650',
+    appId: '1:813615195650:web:9fc4f5874662d83142291b',
+    measurementId: 'G-NSTJ8CZ03V',
+    clientId: '813615195650-068gfsdn3u243s81p78kkt4o91ptr808.apps.googleusercontent.com'
+  }
 };
 
 /*

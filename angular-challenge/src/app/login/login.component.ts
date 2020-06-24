@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +18,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authSvc: AuthService, private router: Router) { }
+  constructor(private googleAuth: AuthService) { }
 
   ngOnInit() {
   }
 
   onLogin() {
-    this.router.navigate(['/home/mycalendar']);
+    this.googleAuth.signIn();
   }
 }

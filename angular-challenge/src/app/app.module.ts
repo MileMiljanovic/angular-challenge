@@ -12,28 +12,28 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { MycalendarComponent } from './mycalendar/mycalendar.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { environment } from 'src/environments/environment';
+import { AuthguardService } from './authguard.service';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomepageComponent, children: [
+  { path: 'home', component: HomepageComponent, canActivate: [AuthguardService], children: [
     { path: 'mycalendar', component: MycalendarComponent },
-    { path: 'secondary', component: SecondaryCalendarsComponent },
+    { path: 'secondary', component: SecondaryCalendarsComponent},
     { path: 'statistics', component: StatisticsComponent }
-  ] },
+  ]},
+  { path: '**', redirectTo: 'login' }
 ];
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyDBgmKOuLvciZ6i1SxWzKs4_qR92YwzlQM',
-  authDomain: 'angular-challenge-b99ce.firebaseapp.com',
-  databaseURL: 'https://angular-challenge-b99ce.firebaseio.com',
-  projectId: 'angular-challenge-b99ce',
-  storageBucket: 'angular-challenge-b99ce.appspot.com',
-  messagingSenderId: '813615195650',
-  appId: '1:813615195650:web:9fc4f5874662d83142291b',
-  measurementId: 'G-NSTJ8CZ03V'
-};
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 
 @NgModule({
   declarations: [
@@ -50,8 +50,9 @@ const firebaseConfig = {
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
