@@ -1,8 +1,16 @@
-<div class="row" style="text-align: center; margin-top: 4%; margin-bottom: 4%;" [@fade]>
-    <div class="column" style="width: 30%;">
-        <p style="color: white">Dropdowns and shit here</p>
+<div class="row" style="text-align: center; margin-top: 4%; margin-bottom: 4%;" *ngIf="rendered" [@fade]>
+    <div class="column" style="width: 30%; margin-left: 5%;">
+      <select class="form-control" [(ngModel)]="selectedRoom" (change)="onChangeSelect()">
+        <option [value]="undefined" [disabled]="true" [hidden]="true">Select a meeting room</option>
+        <option *ngFor="let room of allCalendars" [value]="room.id">{{room.name}}</option>
+      </select>
+      <br>
+      <select class="form-control" [(ngModel)]="selectedMode" (change)="onChangeSelect()">
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+      </select>
     </div>
-    <div class="column" style="width: 70%; height: 80%">
+    <div class="column" style="width: 65%; height: 80%">
         <div>
             <canvas baseChart
                 [data]="pieChartData"
@@ -12,3 +20,4 @@
         </div>
     </div>
 </div>
+<ngx-spinner></ngx-spinner>

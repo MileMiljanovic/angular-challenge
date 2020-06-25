@@ -18,9 +18,11 @@ export class CalendarService {
   }
 
   async getCalendar(param: string) {
+    const monthAgo = new Date();
+    monthAgo.setDate(monthAgo.getDate() - 30);
     const events = await gapi.client.calendar.events.list({
       calendarId: param,
-      timeMin: new Date().toISOString(),
+      timeMin: monthAgo.toISOString(),
       showDeleted: false,
       singleEvents: true,
       maxResults: 100,
