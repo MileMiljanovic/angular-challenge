@@ -1,1 +1,14 @@
-<p>statistics works!</p>
+<div class="row" style="text-align: center; margin-top: 4%; margin-bottom: 4%;" [@fade]>
+    <div class="column" style="width: 30%;">
+        <p style="color: white">Dropdowns and shit here</p>
+    </div>
+    <div class="column" style="width: 70%; height: 80%">
+        <div>
+            <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType">
+            </canvas>
+        </div>
+    </div>
+</div>

@@ -10,21 +10,27 @@ export class CalendarService {
 
   calendarEventsPrimary: any[];
   user: firebase.User;
+  allCalendars: any[];
   constructor(private authSvc: AuthService) {
     this.authSvc.user.subscribe(
       data => this.user = data
     );
   }
 
-  async getPrimaryCalendar() {
+  async getCalendar(param: string) {
     const events = await gapi.client.calendar.events.list({
-      calendarId: 'primary',
+      calendarId: param,
       timeMin: new Date().toISOString(),
-      showDeleted: true,
+      showDeleted: false,
       singleEvents: true,
       maxResults: 100,
       orderBy: 'startTime'
     });
     this.calendarEventsPrimary = events.result.items;
+  }
+
+  async getAllCalendars() {
+    const calendars = await gapi.client.calendar.calendarList.list();
+    this.allCalendars = calendars.result.items;
   }
 }

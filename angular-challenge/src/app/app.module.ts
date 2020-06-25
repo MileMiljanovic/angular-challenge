@@ -17,6 +17,9 @@ import { AuthguardService } from './authguard.service';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { ModalModule } from 'ngb-modal';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -52,7 +55,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FullCalendarModule
+    FullCalendarModule,
+    ModalModule,
+    NgxSpinnerModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

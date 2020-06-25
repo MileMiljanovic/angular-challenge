@@ -1,3 +1,18 @@
-<div *ngIf="rendered">
+<div *ngIf="rendered" [@fade]>
 <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
+<ngx-spinner></ngx-spinner>
+<modal #eventModal>
+    <modal-header>
+        <h3>{{selectedEvent?.title}}</h3>
+    </modal-header>
+  
+    <modal-content>
+        <p>Invited by: {{selectedEvent?.extendedProps?.creator?.email}}</p>
+        <p>Hangouts link: <a [href]="selectedEvent?.extendedProps?.hangoutLink">{{selectedEvent?.extendedProps?.hangoutLink}}</a></p>
+        <p>Location: {{selectedEvent?.extendedProps?.location}}</p>
+        <p>Event status: {{selectedEvent?.extendedProps?.status}}</p>
+        <p>Event starting at: {{selectedEvent?.start | date: 'medium'}}</p>
+        <p>Event ending at: {{selectedEvent?.end | date: 'medium'}}</p>
+    </modal-content>
+  </modal>
