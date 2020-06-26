@@ -22,14 +22,14 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home/mycalendar', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomepageComponent, canActivate: [AuthguardService], children: [
     { path: 'mycalendar', component: MycalendarComponent },
     { path: 'secondary', component: SecondaryCalendarsComponent},
     { path: 'statistics', component: StatisticsComponent }
   ]},
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'home/mycalendar', pathMatch: 'full' }
 ];
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
