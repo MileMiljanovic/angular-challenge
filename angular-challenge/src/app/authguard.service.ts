@@ -12,8 +12,8 @@ export class AuthguardService implements CanActivate {
   constructor(public auth: AuthService, public router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> | Observable<boolean | UrlTree> {
-    return this.auth.isLoggedIn.pipe(take(1), map(isAuth => {
-      if (isAuth) {
+    return this.auth.user.pipe(take(1), map(isAuth => {
+      if (!!isAuth) {
         return true;
       } else {
         return this.router.createUrlTree(['login']);

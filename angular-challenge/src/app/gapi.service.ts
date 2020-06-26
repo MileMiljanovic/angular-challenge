@@ -55,7 +55,7 @@ export class GAPIService {
             return reject(error);
           }
         };
-        gapi.load('client:auth2', initClient);
+        await gapi.load('client:auth2', initClient);
       } catch (error) {
         return reject(error);
       }

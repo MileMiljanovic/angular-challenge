@@ -43,7 +43,7 @@ export class AuthService {
   private async initAuth2(baseScopes: string[]): Promise<void> {
     await this.gapiService.initClient(baseScopes);
     if (!gapi.auth2.getAuthInstance()) {
-      gapi.auth2.init({
+      await gapi.auth2.init({
         client_id: environment.firebase.clientId,
         scope: baseScopes.join(' ')
       });
@@ -55,7 +55,7 @@ export class AuthService {
     const googleUser = await gapi.auth2.getAuthInstance().signIn({
       prompt: 'select_account'
     });
-    const token = googleUser.getAuthResponse().id_token;
+    const token = await googleUser.getAuthResponse().id_token;
     const credential = auth.GoogleAuthProvider.credential(token);
     await auth().signInWithCredential(credential);
     this.router.navigate(['/home/mycalendar']);

@@ -5,7 +5,6 @@ import { ModalManager } from 'ngb-modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { trigger, style, animate, transition } from '@angular/animations';
 
-
 @Component({
   selector: 'app-mycalendar',
   templateUrl: './mycalendar.component.html',

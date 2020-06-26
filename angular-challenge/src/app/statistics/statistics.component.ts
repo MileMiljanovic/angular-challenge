@@ -138,7 +138,6 @@ export class StatisticsComponent implements OnInit {
       const diffMins = diffMs / 60000;
       totalOccupancyMinutes += diffMins;
     }
-    console.log(totalOccupancyMinutes);
     let percentOccupied = 0;
     if (this.selectedMode === 'weekly') {
       percentOccupied = Math.round((totalOccupancyMinutes / TOTAL_MINUTES_WEEK) * 100);
