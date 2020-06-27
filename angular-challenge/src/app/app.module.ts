@@ -20,10 +20,11 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { ModalModule } from 'ngb-modal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ChartsModule } from 'ng2-charts';
+import { LoginGuardService } from './login-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home/mycalendar', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuardService] },
   { path: 'home', component: HomepageComponent, canActivate: [AuthguardService], children: [
     { path: 'mycalendar', component: MycalendarComponent },
     { path: 'secondary', component: SecondaryCalendarsComponent},
